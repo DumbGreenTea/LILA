@@ -1,0 +1,58 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+body * {
+    box-sizing: border-box;
+}
+
+.container {
+    height: 100%;
+    padding: 0;
+    display: grid;
+    grid-row: auto / 1fr;
+}
+
+.WindowTitle {
+    padding: 10px;
+    height: auto;
+    display: inline-block;
+    font-family: 'georgia';
+}
+
+.windowControls {
+    float: right;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-right: 5px;
+    width: 100px;
+}
+
+.windowControls button{
+    outline: 0;
+    border: 0;
+    padding: 5px;
+    background: none;
+}
+
+.titleBarStyle{
+    background:#202327;;
+    color:#FFF ;
+    size: 10px;
+}
+
+.windowControlsStyle{
+
+}
+
+.windowControlsStyle button{
+    color: #FFF;
+    weight: bold;
+}
+
+.windowControlsStyle button:hover{
+    border-radius: 30%;
+    transition: background-color 0.3s;
+    background:#484 ;
+}

@@ -1,2 +1,2 @@
 # LILA
-Proyecto LILA (con nombre a cambiar) creado con la tecnología electron (javascript, css y html), desarrollado por Diego Leiva Reyes y Bruno Reyes
+Proyecto LILA creado con la tecnología electron (javascript, css y html), desarrollado por Diego Leiva Reyes y Bruno Reyes, con profesor a cargo Danilo Borquez

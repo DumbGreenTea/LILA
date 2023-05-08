@@ -1,36 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <!--esta es una forma de hacerlo, cuando no están ambos archivos en la misma carpeta-->
   <!--<link rel="stylesheet" href="/Users/diegoleiva/Desktop/LILA/src/titleBar.css">-->
 
   <!--Y esta forma se utiliza cuando están en la misma carpeta-->
   <link rel="stylesheet" href="titleBar.css">
+  <link rel="stylesheet" href="coding_screen.css">
+  <link rel="stylesheet" href="filesnlogo.css">
+
 </head>
 <body>
-  <div class="container">
-    <div class="titleBar titleBarStyle">
+  <div class="container"><!--este es el contenedor general, el que contiene todos los otros elementos-->
+
+    <div class="titleBar titleBarStyle"><!--aquí se encuentra la división superior, con el botón maximizar, minimizar y cerrar ventana-->
 
       <div class="WindowTitle">Proyecto Lila</div>
       <div class="windowControls windowControlsStyle">
         <button id="minimise">-</button>
-        <button id="maxmise">+</button>
-        <button id="close">x</button>
+        <button id="maximise">+</button>
+        <button id="quit">x</button>
       </div>
 
-    </div> <!-- aquí termina el contenedor titleBar-->
-
-    <div class="coding_screen">
-
-      <div id="code_toolbar"></div>
-      <div id="terminal"></div>
-      <div id="editor"></div>
-      <div id="file_reader"></div>
     </div>
+
+    <div class="filesnlogo">
+      <div class="window_file">
+        <div id="file_button">archivo1</div>
+      </div>
+      <div id="logo">LILA</div>
+    
+    </div>
+
+    <div class="coding_screen"> <!--En esta clase encontramos todos los elementos del modo practica-->
+
+      <div id="code_toolbar">barra de herramientas</div>
+      <div id="terminal">terminal</div>
+      <div id="editor">editor de codigo</div>
+      <div id="file_reader">lector markdown/PDF</div>
+    </div>
+    
   </div>
 
-
-
+  <!--los script generalmente se ponen al final del body-->
   
   
 </body>

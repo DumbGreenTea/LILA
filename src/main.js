@@ -14,7 +14,7 @@ function createWindow () {
   })
 
   //le voy a decir que cargue mi archivo html para mostrar el contenido de la ventana
-  win.loadFile('src/views/index.html')
+  win.loadFile('src/views/app.html')
 }
 
 /*Cuando tu escribes app.on(), tienes entre parentesis un montón de eventos que puedes "escuchar" de a ventana, como por ejemplo detectar cuando

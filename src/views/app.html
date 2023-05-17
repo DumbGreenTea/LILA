@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="containerStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.js"></script>
+    <style>
+      .editorStyle {
+        position: relative;
+        height: 100%;
+      }
+
+      .CodeMirror {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="titlebarStyle"></div>
+      <div class="filesnlogo"></div>
+      <div class="fileStyle"></div>
+      <div class="terminalStyle"></div>
+      <div class="editorStyle"></div>
+      <div class="toolbar"></div>
+    </div>
+
+    <!--Aquí comienza el script para hacer aparecer el editor y asociarlo a editorStyle-->
+    <script>
+      var editor = CodeMirror(document.querySelector('.editorStyle'), {
+        mode: 'javascript',
+        lineNumbers: true,
+        theme: 'default'
+      });
+    </script>
+  </body>
+</html>
+

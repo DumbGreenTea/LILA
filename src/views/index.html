@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="titleBar.css"> 
   <link rel="stylesheet" href="coding_screen.css">
   <link rel="stylesheet" href="filesnlogo.css">
+  
 
   <!-- Requerimientos para el editor de texto CodeMirror -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.4/codemirror.min.css">
@@ -28,7 +29,7 @@
 
 </head>
 <body>
-  <div class="container">
+  <div class="container"> 
     <div class="titleBar titleBarStyle">
       <div class="WindowTitle">Proyecto Lila</div>
       <div class="windowControls windowControlsStyle">
@@ -51,7 +52,11 @@
         <div id="terminal">terminal</div>
       </div>
       <div id="editor"></div>
-      <div id="file_reader">lector markdown/PDF</div>
+      <div id="file_reader">
+        <textarea id="markdown_input" placeholder="Ingresa el contenido del archivo Markdown"></textarea>
+        <div id="rendered_output"></div>
+      </div>
+      
     </div>
     
   </div>
@@ -108,7 +113,18 @@
     const markdownText = "Contenido del archivo Markdown";
     const htmlText = converter.makeHtml(markdownText);
 
+    const markdownInput = document.getElementById("markdown_input");
+    const renderedOutput = document.getElementById("rendered_output");
+
     
+
+    markdownInput.addEventListener("input", function() {
+    const markdownText = markdownInput.value;
+    const htmlText = converter.makeHtml(markdownText);
+    renderedOutput.innerHTML = htmlText;
+});
+
+
   </script>
 
   

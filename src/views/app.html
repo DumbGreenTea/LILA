@@ -1,38 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" href="containerStyle.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.js"></script>
-    <style>
-      .editorStyle {
-        position: relative;
-        height: 100%;
-      }
+<head>
+  <link rel="stylesheet" href="containerStyle.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.js"></script>
+  <style>
+    .editorStyle {
+      position: relative;
+      height: 100%;
+    }
 
-      .CodeMirror {
-        height: 100%;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="titlebarStyle"></div>
-      <div class="filesnlogo"></div>
-      <div class="fileStyle"></div>
-      <div class="terminalStyle"></div>
-      <div class="editorStyle"></div>
-      <div class="toolbar"></div>
-    </div>
+    .CodeMirror {
+      height: 100%;
+    }
 
-    <!--Aquí comienza el script para hacer aparecer el editor y asociarlo a editorStyle-->
-    <script>
-      var editor = CodeMirror(document.querySelector('.editorStyle'), {
-        mode: 'javascript',
-        lineNumbers: true,
-        theme: 'default'
+    .keyword {
+      /* Estilos para palabras clave resaltadas */
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="titlebarStyle"></div>
+    <div class="filesnlogo"></div>
+    <div class="fileStyle"></div>
+    <div class="terminalStyle"></div>
+    <div class="editorStyle"></div>
+    <div class="toolbar"></div>
+  </div>
+
+  <!--Aquí comienza el script para hacer aparecer el editor y asociarlo a editorStyle-->
+  <script>
+    var editor = CodeMirror(document.querySelector('.editorStyle'), {
+      mode: 'javascript',
+      lineNumbers: true,
+      theme: 'default'
+    });
+
+    // Funcionalidad para resaltar palabras clave
+    editor.on('change', function() {
+      editor.eachLine(function(line) {
+        var text = line.text;
+        var keywords = ['if', 'else', 'for', 'while']; // Palabras clave
+
+        keywords.forEach(function(keyword) {
+          var regex = new RegExp('\\b' + keyword + '\\b', 'g');
+          var match;
+
+          while ((match = regex.exec(text)) !== null) {
+            editor.markText(
+              { line: line.lineNo(), ch: match.index },
+              { line: line.lineNo(), ch: match.index + match[0].length },
+              { className: 'keyword' }
+            );
+          }
+        });
       });
-    </script>
-  </body>
+    });
+  </script>
+</body>
 </html>
-

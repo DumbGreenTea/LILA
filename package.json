@@ -12,6 +12,7 @@
     "cacheable-lookup": "^5.0.4",
     "cacheable-request": "^7.0.2",
     "clone-response": "^1.0.3",
+    "codemirror": "^6.0.1",
     "debug": "^4.3.4",
     "decompress-response": "^6.0.0",
     "defer-to-connect": "^2.0.1",
@@ -64,6 +65,8 @@
     "type-fest": "^0.13.1",
     "universalify": "^0.1.2",
     "wrappy": "^1.0.2",
+    "xterm": "^5.1.0",
+    "xterm-addon-fit": "^0.7.0",
     "yallist": "^4.0.0",
     "yauzl": "^2.10.0"
   },

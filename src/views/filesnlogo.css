@@ -1,0 +1,24 @@
+.filesnlogo {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: 1fr;
+    grid-auto-columns: 1fr;
+    gap: 2%;
+    margin: 1%;
+  }
+  
+  .window_file {
+    background-color: brown;
+    grid-column-start: 1;
+    grid-column-end: 9;
+  }
+  
+  #file_button {
+    /* Estilos para el elemento file_button */
+  }
+  
+  #logo {
+    background-color: chocolate;
+    grid-column: 9;
+  }
+  

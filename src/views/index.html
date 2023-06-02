@@ -1,37 +1,134 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <!--esta es una forma de hacerlo, cuando no están ambos archivos en la misma carpeta-->
+  <!-- Esta es una forma de hacerlo cuando los archivos CSS no están en la misma carpeta -->
   <!--<link rel="stylesheet" href="/Users/diegoleiva/Desktop/LILA/src/titleBar.css">-->
 
-  <!--Y esta forma se utiliza cuando están en la misma carpeta-->
-  <link rel="stylesheet" href="titleBar.css">
+  <!-- Esta forma se utiliza cuando los archivos CSS están en la misma carpeta -->
+  <link rel="stylesheet" href="titleBar.css"> 
+  <link rel="stylesheet" href="coding_screen.css">
+  <link rel="stylesheet" href="filesnlogo.css">
+  
+
+  <!-- Requerimientos para el editor de texto CodeMirror -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.4/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css">
+  <style>
+    .CodeMirror {
+      height: 500px;
+      font-size: 16px;
+    }
+  </style>
+
+  <!--Requerimientos para inicializar terminal-->
+  <link rel="stylesheet" href="https://unpkg.com/xterm/css/xterm.css" />
+  <script src="https://unpkg.com/xterm/lib/xterm.js"></script>
+
+  <!--Requerimientos para inicializar el lector de archivos-->
+  <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script>
+
 </head>
 <body>
-  <div class="container">
+  <div class="container"> 
     <div class="titleBar titleBarStyle">
-
       <div class="WindowTitle">Proyecto Lila</div>
       <div class="windowControls windowControlsStyle">
         <button id="minimise">-</button>
-        <button id="maxmise">+</button>
-        <button id="close">x</button>
+        <button id="maximise">+</button>
+        <button id="quit">x</button>
       </div>
+    </div>
 
-    </div> <!-- aquí termina el contenedor titleBar-->
+    <div class="filesnlogo">
+      <div class="window_file">
+        <div id="file_button">archivo1</div>
+      </div>
+      <div id="logo">LILA</div>
+    </div>
 
     <div class="coding_screen">
-
-      <div id="code_toolbar"></div>
-      <div id="terminal"></div>
+      <div id="code_toolbar">barra de herramientas</div>
+      <div id="terminalContainer">
+        <div id="terminal">terminal</div>
+      </div>
       <div id="editor"></div>
-      <div id="file_reader"></div>
+      <div id="file_reader">
+        <textarea id="markdown_input" placeholder="Ingresa el contenido del archivo Markdown"></textarea>
+        <div id="rendered_output"></div>
+      </div>
+      
     </div>
+    
   </div>
 
+  <!-- Los scripts generalmente se ponen al final del body -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.4/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.4/mode/htmlmixed/htmlmixed.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-javascript.min.js"></script>
+  <script>
+    var editor = CodeMirror(document.getElementById("editor"), {
+      mode: "htmlmixed",
+      lineNumbers: true,
+      extraKeys: { "Enter": false } // Evita el doble salto de línea al presionar Enter
+    });
 
+    editor.on("change", function() {
+      var code = editor.getValue();
+      console.log(code); // Puedes hacer lo que desees con el código, como guardarlo o procesarlo
+    });
+  </script>
+
+  <!--script para iniciar la consola en id=terminal-->
+  <script>
+    // Crea una instancia de Terminal
+    var term = new Terminal();
+  
+    // Asocia la terminal con el elemento que tiene el ID "terminal"
+    term.open(document.getElementById('terminal'));
+  
+    // Obtiene el contenedor del grid de la terminal
+    var terminalContainer = document.getElementById('terminalContainer');
+  
+    // Obtiene las dimensiones del contenedor del grid
+    var containerWidth = terminalContainer.clientWidth;
+    var containerHeight = terminalContainer.clientHeight;
+  
+    // Establece las dimensiones de la terminal según el contenedor del grid
+    term.resize(Math.floor(containerWidth / 8), Math.floor(containerHeight / 20));
+  
+    // Ejemplo: Imprime un mensaje en la terminal
+    term.write('Bienvenido a la terminal!\r\n');
+  
+    // Ejemplo: Recibe y muestra la entrada del usuario en la terminal
+    term.onData(function(data) {
+      term.write(data);
+    });
+  </script>
+
+  <!--script para inicializar el lector de archivos-->
+  <script>
+    //instanciamos primero un objeto sacado d la librería showdown para leer markdown
+    const converter = new showdown.Converter();
+    const markdownText = "Contenido del archivo Markdown";
+    const htmlText = converter.makeHtml(markdownText);
+
+    const markdownInput = document.getElementById("markdown_input");
+    const renderedOutput = document.getElementById("rendered_output");
+
+    
+
+    markdownInput.addEventListener("input", function() {
+    const markdownText = markdownInput.value;
+    const htmlText = converter.makeHtml(markdownText);
+    renderedOutput.innerHTML = htmlText;
+});
+
+
+  </script>
 
   
   
+
 </body>
 </html>

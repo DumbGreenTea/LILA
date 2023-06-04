@@ -1,0 +1,18 @@
+
+.toolbar {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .toolbar button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .toolbar button:hover {
+    background-color: #45a049;
+  }

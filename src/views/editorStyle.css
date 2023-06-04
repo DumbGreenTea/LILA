@@ -1,0 +1,21 @@
+.editorStyle {
+    position: relative;
+    height: 100%; 
+  }
+  
+  .CodeMirror {
+    height: 100%;
+    background-color: #414BB2; /* Cambia el color de fondo a tu elección */
+    color: #ededed; /* Cambia el color de las letras a tu elección */
+  }
+  
+  .keyword {
+    /* Estilos para palabras clave resaltadas */
+    color: #f2605e;
+    font-weight: bold;
+  }
+  
+  .CodeMirror .cm-hash {
+    color: red; /* Cambia el color del texto a tu elección */
+  }
+  

@@ -1,45 +1,61 @@
-.container {  display: grid;
-  grid-template-columns: 0.1fr 1.9fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 3.3fr .1fr;
+.container {
+  display: grid;
+  grid-template-columns: 0.1fr 1.9fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 3.3fr 0.1fr;
   grid-template-rows: 0.5fr 0.6fr 1fr 1.9fr 1.2fr 1.2fr 1.2fr 1.2fr 0.1fr;
   gap: 12px 20px;
   grid-auto-flow: row;
 }
 
-.titlebarStyle { grid-area: 1 / 1 / 2 / 12; }
+.titlebarStyle {
+  grid-area: 1 / 1 / 2 / 12;
+  background-color: #414BB2;
+}
 
-.filesnlogo { grid-area: 2 / 2 / 3 / 11; }
+.filesnlogo {
+  grid-area: 2 / 2 / 3 / 11;
+  background-color: #414BB2;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  min-height: 40px;
+}
 
-.fileStyle { grid-area: 3 / 7 / 5 / 11; }
+.filesnlogo a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+  max-height: 10%;
+}
 
-.terminalStyle { grid-area: 5 / 7 / 9 / 11; }
+.filesnlogo a:hover {
+  background-color: #777;
+}
 
-.editorStyle { grid-area: 4 / 2 / 9 / 7; }
+.fileStyle {
+  grid-area: 3 / 7 / 5 / 11;
+  background-color: #414BB2;
+  color: #ededed;
+  overflow: auto;
+}
 
-.toolbar { grid-area: 3 / 2 / 4 / 7; }
+.terminalStyle {
+  grid-area: 5 / 7 / 9 / 11;
+  background-color: #414BB2;
+}
 
+.editorStyle {
+  grid-area: 4 / 2 / 9 / 7;
+}
 
-html, body , .container {
+.toolbar {
+  grid-area: 3 / 2 / 4 / 7;
+  background-color: #414BB2;
+  min-height: 40px;
+}
+
+html, body, .container {
   height: 100%;
   margin: 0;
 }
-
-/* For presentation only, no need to copy the code below 
-
-.container * {
-  border: 1px solid red;
-  position: relative;
-}
-
-.container *:after {
-  content:attr(class);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: grid;
-  align-items: center;
-  justify-content: center;
-}
-
-*/

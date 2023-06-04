@@ -4,61 +4,44 @@
   <link rel="stylesheet" href="containerStyle.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.js"></script>
-  <style>
-    .editorStyle {
-      position: relative;
-      height: 100%;
-    }
+  <link rel="stylesheet" href="editorStyle.css">
+  <link rel="stylesheet" href="buttons.css">
+  <!--para la terminal-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@4.19.0/css/xterm.css" />
+  <script src="https://cdn.jsdelivr.net/npm/xterm@4.19.0/lib/xterm.js"></script>
+  <!--para la markdown-->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  
 
-    .CodeMirror {
-      height: 100%;
-    }
-
-    .keyword {
-      /* Estilos para palabras clave resaltadas */
-      color: red;
-      font-weight: bold;
-    }
-  </style>
 </head>
 <body>
   <div class="container">
     <div class="titlebarStyle"></div>
-    <div class="filesnlogo"></div>
-    <div class="fileStyle"></div>
+    <div class="filesnlogo">
+      <div class="tab">Pestana 1</div>
+      <div class="tab">Pestana 2</div>
+      <div class="tab">Pestana 3</div>
+      <!-- Agrega más elementos de pestañas según sea necesario -->
+    </div>
+    <div class="fileStyle" contenteditable="true" id="textCell"></div>
     <div class="terminalStyle"></div>
     <div class="editorStyle"></div>
-    <div class="toolbar"></div>
+    <div class="toolbar">
+      <button>markdown/play</button>
+      <button onclick="translateMarkdown()">Convertir</button>
+      <button onclick="editMarkdown()">Editar</button>
+      <button>a</button>
+      <button>a</button>
+      <button>a</button>
+    </div>
   </div>
-
+  
   <!--Aquí comienza el script para hacer aparecer el editor y asociarlo a editorStyle-->
-  <script>
-    var editor = CodeMirror(document.querySelector('.editorStyle'), {
-      mode: 'javascript',
-      lineNumbers: true,
-      theme: 'default'
-    });
+  <script src="./editor.js"></script>
 
-    // Funcionalidad para resaltar palabras clave
-    editor.on('change', function() {
-      editor.eachLine(function(line) {
-        var text = line.text;
-        var keywords = ['if', 'else', 'for', 'while']; // Palabras clave
+  <!--Aquí comienza el script relacionado con la terminal-->
+  <script src="./markdown.js"></script>
 
-        keywords.forEach(function(keyword) {
-          var regex = new RegExp('\\b' + keyword + '\\b', 'g');
-          var match;
-
-          while ((match = regex.exec(text)) !== null) {
-            editor.markText(
-              { line: line.lineNo(), ch: match.index },
-              { line: line.lineNo(), ch: match.index + match[0].length },
-              { className: 'keyword' }
-            );
-          }
-        });
-      });
-    });
-  </script>
+  <!--Aqui comeinza el lector markdown-->
 </body>
 </html>
